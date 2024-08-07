@@ -1,0 +1,20 @@
+let
+    HaversineDistance = (lat1, lon1, lat2, lon2) =>
+    let
+        R = 6371,  // Raio médio da Terra em quilômetros
+        ToRadians = (degrees) => degrees * (2 * Number.PI / 360),
+
+
+        dlat = ToRadians(lat2 - lat1),
+        dlong = ToRadians(lon2 - lon1),
+
+        a = Number.Power(Number.Sin(dlat / 2), 2) +
+            Number.Cos(ToRadians(lat1)) * Number.Cos(ToRadians(lat2)) * Number.Power(Number.Sin(dlong / 2), 2),
+
+        c = 2 * Number.Atan2(Number.Sqrt(a), Number.Sqrt(1 - a)),
+
+        distance = R * c
+    in
+        distance
+in
+    HaversineDistance
